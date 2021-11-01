@@ -1,4 +1,7 @@
-package com.example.feature_toggle_impl.core
+package com.example.feature_toggle_impl.domain
+
+import com.example.feature_toggle_impl.domain_model.LocalAppToggleRecordBrief
+import com.example.feature_toggle_impl.domain_model.LocalTogglesCalculationResult
 
 /**
  * Calculates the summary list of local toggles that have been turned on
@@ -8,13 +11,14 @@ object LocalTogglesCalculator {
      * The calculation method
      * @param appToggles a list of toggles, hard sealed in the app
      * @param deviceToggles a list of keys for toggles, stored on a device, that were turned on
+     * @return calculation result
      */
-    fun calculate(appToggles: List<LocalAppToggle>, deviceToggles: List<String>): LocalTogglesCalculationResult {
+    fun calculate(appToggles: List<LocalAppToggleRecordBrief>, deviceToggles: List<String>): LocalTogglesCalculationResult {
         val activeToggles = mutableListOf<String>()
 
         appToggles.forEach { appToggle ->
-            if(appToggle.isOn != null) {
-                if(appToggle.isOn) {
+            if(appToggle.enabled != null) {
+                if(appToggle.enabled) {
                     activeToggles.add(appToggle.key)
                 }
             } else {

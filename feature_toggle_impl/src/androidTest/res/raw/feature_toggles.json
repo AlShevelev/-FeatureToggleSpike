@@ -1,0 +1,15 @@
+[
+  {
+    "key": "feature1",
+    "title": "feature1 title",
+    "description": "feature1 description",
+    "enabled": true,
+    "version": "feature1 version"
+  },
+  {
+    "key": "feature2",
+    "title": "feature2 title",
+    "description": "feature2 description",
+    "version": "feature2 version"
+  }
+]

@@ -1,0 +1,21 @@
+[
+  {
+    "key": "wonderful_feature",
+    "title": "A wonderful feature",
+    "description": "A wonderful feature description",
+    "enabled": true,
+    "version": "14.51.0"
+  },
+  {
+    "key": "excellent_feature",
+    "title": "An excellent feature",
+    "description": "An excellent feature description",
+    "version": "14.42.0"
+  },
+  {
+    "key": "miracle_feature",
+    "title": "A miracle feature",
+    "description": "A miracle feature description",
+    "version": "14.118.0"
+  }
+]

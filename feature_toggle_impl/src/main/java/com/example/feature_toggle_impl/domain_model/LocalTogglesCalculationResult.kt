@@ -1,4 +1,6 @@
-package com.example.feature_toggle_impl.core
+package com.example.feature_toggle_impl.domain_model
+
+import com.example.feature_toggle_impl.domain.LocalTogglesCalculator
 
 /**
  * A calculation result for [LocalTogglesCalculator]
