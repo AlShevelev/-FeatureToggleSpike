@@ -10,6 +10,8 @@ buildscript {
         kotlin_version = '1.5.31'
 
         compose_version = '1.0.4'
+
+        junit_version = '4.13.2'
     }
     repositories {
         google()

@@ -8,3 +8,5 @@ dependencyResolutionManagement {
 }
 rootProject.name = "FeatureToggleSpike"
 include ':app'
+include ':feature_toggle_impl'
+include ':feature_toggle_api'
