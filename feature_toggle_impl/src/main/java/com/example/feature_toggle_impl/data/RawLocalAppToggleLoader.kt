@@ -11,7 +11,7 @@ import java.io.InputStreamReader
  * An implementation for [LocalAppToggleLoader], loads toggles from a "raw" resource
  * @property context application context for access to resources
  */
-class LocalAppToggleLoaderRaw(private val context: Context) : LocalAppToggleLoader {
+class RawLocalAppToggleLoader(private val context: Context) : LocalAppToggleLoader {
     /**
      * Loads the records
      * @return all loaded records

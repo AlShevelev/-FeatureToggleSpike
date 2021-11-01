@@ -3,7 +3,7 @@ package com.example.feature_toggle_impl
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
 import com.example.feature_toggle_impl.data.LocalAppToggleLoader
-import com.example.feature_toggle_impl.data.LocalAppToggleLoaderRaw
+import com.example.feature_toggle_impl.data.RawLocalAppToggleLoader
 import com.example.feature_toggle_impl.data_model.LocalAppToggleRecord
 import kotlinx.coroutines.runBlocking
 import org.junit.Assert.*
@@ -12,10 +12,10 @@ import org.junit.Test
 import org.junit.runner.RunWith
 
 /**
- * Contains tests for [LocalAppToggleLoaderRaw] class
+ * Contains tests for [RawLocalAppToggleLoader] class
  */
 @RunWith(AndroidJUnit4::class)
-class LocalAppToggleLoaderRawTest {
+class RawLocalAppToggleLoaderTest {
     /**
      * Checks that all items have been loaded without their content validation
      */
@@ -80,7 +80,7 @@ class LocalAppToggleLoaderRawTest {
         @JvmStatic
         fun setUp() {
             val appContext = InstrumentationRegistry.getInstrumentation().context
-            testSubject = LocalAppToggleLoaderRaw(appContext)
+            testSubject = RawLocalAppToggleLoader(appContext)
         }
     }
 }

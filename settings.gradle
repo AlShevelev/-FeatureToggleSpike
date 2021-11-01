@@ -10,3 +10,5 @@ rootProject.name = "FeatureToggleSpike"
 include ':app'
 include ':feature_toggle_impl'
 include ':feature_toggle_api'
+include ':key_value_storage_impl'
+include ':key_value_storage_api'
