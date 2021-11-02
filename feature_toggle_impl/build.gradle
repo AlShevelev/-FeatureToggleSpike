@@ -1,6 +1,7 @@
 plugins {
     id 'com.android.library'
     id 'kotlin-android'
+    id 'kotlinx-serialization'
 }
 
 android {
@@ -40,7 +41,7 @@ dependencies {
     api project(':key_value_storage_api')
     api project(':feature_toggle_api')
 
-    implementation "com.google.code.gson:gson:$gson_version"
+    implementation "org.jetbrains.kotlinx:kotlinx-serialization-json:$kotlinx_serialization_json_version"
 
     testImplementation "junit:junit:$junit_version"
     androidTestImplementation "androidx.test.ext:junit:$junit_on_device_version"

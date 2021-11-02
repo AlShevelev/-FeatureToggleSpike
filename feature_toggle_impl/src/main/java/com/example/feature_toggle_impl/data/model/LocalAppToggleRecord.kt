@@ -1,6 +1,6 @@
 package com.example.feature_toggle_impl.data.model
 
-import com.google.gson.annotations.SerializedName
+import kotlinx.serialization.Serializable
 
 /**
  * One local toggle record stored inside the app
@@ -10,15 +10,11 @@ import com.google.gson.annotations.SerializedName
  * @property enabled is this toggle turned on? - may be undefined
  * @property version an app version in which the toggle must be removed (for information only)
  */
+@Serializable
 class LocalAppToggleRecord (
-    @SerializedName("key")
     val key: String,
-    @SerializedName("title")
     val title: String,
-    @SerializedName("description")
     val description: String,
-    @SerializedName("enabled")
-    val enabled: Boolean?,
-    @SerializedName("version")
+    val enabled: Boolean? = null,
     val version: String
 )
