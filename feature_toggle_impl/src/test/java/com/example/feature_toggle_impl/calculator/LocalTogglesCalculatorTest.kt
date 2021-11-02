@@ -1,4 +1,4 @@
-package com.example.feature_toggle_impl
+package com.example.feature_toggle_impl.calculator
 
 import com.example.feature_toggle_impl.data.model.LocalAppToggleRecord
 import com.example.feature_toggle_impl.domain.LocalTogglesCalculator
