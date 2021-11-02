@@ -1,6 +1,6 @@
 package com.example.feature_toggle_impl
 
-import com.example.feature_toggle_impl.domain_model.LocalAppToggleRecordBrief
+import com.example.feature_toggle_impl.data.model.LocalAppToggleRecord
 import com.example.feature_toggle_impl.domain.LocalTogglesCalculator
 import org.junit.Test
 
@@ -16,8 +16,8 @@ class LocalTogglesCalculatorTest {
     @Test
     fun allEmpty() {
         // Arrange
-        val appToggles = listOf<LocalAppToggleRecordBrief>()
-        val deviceToggles = listOf<String>()
+        val appToggles = listOf<LocalAppToggleRecord>()
+        val deviceToggles = setOf<String>()
 
         // Act
         val result = LocalTogglesCalculator.calculate(appToggles, deviceToggles)
@@ -34,15 +34,15 @@ class LocalTogglesCalculatorTest {
     fun appToggleNullAndDeviceToggleExist() {
         // Arrange
         val key = "key1"
-        val appToggles = listOf(LocalAppToggleRecordBrief(key, null))
-        val deviceToggles = listOf(key)
+        val appToggles = listOf(createToggleRecord(key, null))
+        val deviceToggles = setOf(key)
 
         // Act
         val result = LocalTogglesCalculator.calculate(appToggles, deviceToggles)
 
         // Assert
         assertEquals(1, result.activeToggles.size)
-        assertEquals(key, result.activeToggles[0])
+        assertTrue(result.activeToggles.contains(key))
     }
 
     /**
@@ -52,8 +52,8 @@ class LocalTogglesCalculatorTest {
     fun appToggleNullAndDeviceToggleNotExist() {
         // Arrange
         val key = "key1"
-        val appToggles = listOf(LocalAppToggleRecordBrief(key, null))
-        val deviceToggles = listOf<String>()
+        val appToggles = listOf(createToggleRecord(key, null))
+        val deviceToggles = setOf<String>()
 
         // Act
         val result = LocalTogglesCalculator.calculate(appToggles, deviceToggles)
@@ -69,15 +69,15 @@ class LocalTogglesCalculatorTest {
     fun appToggleTrueAndDeviceToggleNotExist() {
         // Arrange
         val key = "key1"
-        val appToggles = listOf(LocalAppToggleRecordBrief(key, true))
-        val deviceToggles = listOf<String>()
+        val appToggles = listOf(createToggleRecord(key, true))
+        val deviceToggles = setOf<String>()
 
         // Act
         val result = LocalTogglesCalculator.calculate(appToggles, deviceToggles)
 
         // Assert
         assertEquals(1, result.activeToggles.size)
-        assertEquals(key, result.activeToggles[0])
+        assertTrue(result.activeToggles.contains(key))
     }
 
     /**
@@ -87,15 +87,15 @@ class LocalTogglesCalculatorTest {
     fun appToggleTrueAndDeviceToggleExists() {
         // Arrange
         val key = "key1"
-        val appToggles = listOf(LocalAppToggleRecordBrief(key, true))
-        val deviceToggles = listOf(key)
+        val appToggles = listOf(createToggleRecord(key, true))
+        val deviceToggles = setOf(key)
 
         // Act
         val result = LocalTogglesCalculator.calculate(appToggles, deviceToggles)
 
         // Assert
         assertEquals(1, result.activeToggles.size)
-        assertEquals(key, result.activeToggles[0])
+        assertTrue(result.activeToggles.contains(key))
     }
 
     /**
@@ -105,8 +105,8 @@ class LocalTogglesCalculatorTest {
     fun appToggleFalseAndDeviceToggleNotExist() {
         // Arrange
         val key = "key1"
-        val appToggles = listOf(LocalAppToggleRecordBrief(key, false))
-        val deviceToggles = listOf<String>()
+        val appToggles = listOf(createToggleRecord(key, false))
+        val deviceToggles = setOf<String>()
 
         // Act
         val result = LocalTogglesCalculator.calculate(appToggles, deviceToggles)
@@ -122,8 +122,8 @@ class LocalTogglesCalculatorTest {
     fun appToggleFalseAndDeviceToggleExists() {
         // Arrange
         val key = "key1"
-        val appToggles = listOf(LocalAppToggleRecordBrief(key, false))
-        val deviceToggles = listOf(key)
+        val appToggles = listOf(createToggleRecord(key, false))
+        val deviceToggles = setOf(key)
 
         // Act
         val result = LocalTogglesCalculator.calculate(appToggles, deviceToggles)
@@ -141,14 +141,23 @@ class LocalTogglesCalculatorTest {
         val key1 = "key1"
         val key2 = "key2"
         val key3 = "key3"
-        val appToggles = listOf(LocalAppToggleRecordBrief(key1, null), LocalAppToggleRecordBrief(key2, true))
-        val deviceToggles = listOf(key3)
+        val appToggles = listOf(createToggleRecord(key1, null), createToggleRecord(key2, true))
+        val deviceToggles = setOf(key3)
 
         // Act
         val result = LocalTogglesCalculator.calculate(appToggles, deviceToggles)
 
         // Assert
         assertEquals(1, result.togglesToRemove.size)
-        assertEquals(key3, result.togglesToRemove[0])
+        assertTrue(result.togglesToRemove.contains(key3))
     }
+
+    private fun createToggleRecord(key: String, enabled: Boolean?) =
+        LocalAppToggleRecord(
+            key = key,
+            title = "",
+            description = "",
+            enabled = enabled,
+            version = ""
+        )
 }

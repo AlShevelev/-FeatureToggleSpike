@@ -1,7 +1,7 @@
 package com.example.feature_toggle_impl.domain
 
-import com.example.feature_toggle_impl.domain_model.LocalAppToggleRecordBrief
-import com.example.feature_toggle_impl.domain_model.LocalTogglesCalculationResult
+import com.example.feature_toggle_impl.data.model.LocalAppToggleRecord
+import com.example.feature_toggle_impl.domain.model.LocalTogglesCalculationResult
 
 /**
  * Calculates the summary list of local toggles that have been turned on
@@ -13,8 +13,8 @@ object LocalTogglesCalculator {
      * @param deviceToggles a list of keys for toggles, stored on a device, that were turned on
      * @return calculation result
      */
-    fun calculate(appToggles: List<LocalAppToggleRecordBrief>, deviceToggles: List<String>): LocalTogglesCalculationResult {
-        val activeToggles = mutableListOf<String>()
+    fun calculate(appToggles: List<LocalAppToggleRecord>, deviceToggles: Set<String>): LocalTogglesCalculationResult {
+        val activeToggles = mutableSetOf<String>()
 
         appToggles.forEach { appToggle ->
             if(appToggle.enabled != null) {
@@ -28,7 +28,7 @@ object LocalTogglesCalculator {
             }
         }
 
-        val togglesToRemove = deviceToggles.subtract(appToggles.map { it.key }).toList()
+        val togglesToRemove = deviceToggles.subtract(appToggles.map { it.key })
 
         return LocalTogglesCalculationResult(activeToggles, togglesToRemove)
     }

@@ -28,8 +28,8 @@ class SharedPrefKeyValueStorageTest {
         val set = setOf(value1, value2)
 
         // Act
-        testSubject.writer.update { _, writer ->
-            writer.setSetString(key, set)
+        testSubject.writer.update {
+            it.setSetString(key, set)
         }
 
         val result = testSubject.reader.contains(key)
@@ -51,9 +51,9 @@ class SharedPrefKeyValueStorageTest {
         val set = setOf(value1, value2)
 
         // Act
-        testSubject.writer.update { _, writer ->
-            writer.setSetString(key, set)
-            writer.remove(key)
+        testSubject.writer.update {
+            it.setSetString(key, set)
+            it.remove(key)
         }
 
         val result = testSubject.reader.contains(key)
@@ -76,13 +76,13 @@ class SharedPrefKeyValueStorageTest {
         val set = setOf(value1, value2)
 
         // Act
-        testSubject.writer.update { _, writer ->
-            writer.setSetString(key1, set)
-            writer.setSetString(key2, set)
+        testSubject.writer.update {
+            it.setSetString(key1, set)
+            it.setSetString(key2, set)
         }
 
-        testSubject.writer.update { _, writer ->
-            writer.clear()
+        testSubject.writer.update {
+            it.clear()
         }
 
         val result1 = testSubject.reader.contains(key1)
@@ -106,8 +106,8 @@ class SharedPrefKeyValueStorageTest {
         val set = setOf(value1, value2)
 
         // Act
-        testSubject.writer.update { _, writer ->
-            writer.setSetString(key, set)
+        testSubject.writer.update {
+            it.setSetString(key, set)
         }
 
         val result = testSubject.reader.getStringSet(key)

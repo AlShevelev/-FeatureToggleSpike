@@ -1,4 +1,4 @@
-package com.example.feature_toggle_impl.domain_model
+package com.example.feature_toggle_impl.domain.model
 
 import com.example.feature_toggle_impl.domain.LocalTogglesCalculator
 
@@ -8,6 +8,6 @@ import com.example.feature_toggle_impl.domain.LocalTogglesCalculator
  * @property togglesToRemove a list of keys for toggles that must be removed from a device
  */
 class LocalTogglesCalculationResult(
-    val activeToggles: List<String>,
-    val togglesToRemove: List<String>
+    val activeToggles: Set<String>,
+    val togglesToRemove: Set<String>
 )

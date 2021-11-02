@@ -1,4 +1,4 @@
-package com.example.feature_toggle_impl.data_model
+package com.example.feature_toggle_impl.data.model
 
 import com.google.gson.annotations.SerializedName
 

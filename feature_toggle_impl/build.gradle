@@ -37,6 +37,9 @@ android {
 }
 
 dependencies {
+    api project(':key_value_storage_api')
+    api project(':feature_toggle_api')
+
     implementation "com.google.code.gson:gson:$gson_version"
 
     testImplementation "junit:junit:$junit_version"

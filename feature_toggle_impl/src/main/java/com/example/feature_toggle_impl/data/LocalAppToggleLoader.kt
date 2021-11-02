@@ -1,6 +1,6 @@
 package com.example.feature_toggle_impl.data
 
-import com.example.feature_toggle_impl.data_model.LocalAppToggleRecord
+import com.example.feature_toggle_impl.data.model.LocalAppToggleRecord
 
 /**
  * The loader for local toggle records stored inside the app

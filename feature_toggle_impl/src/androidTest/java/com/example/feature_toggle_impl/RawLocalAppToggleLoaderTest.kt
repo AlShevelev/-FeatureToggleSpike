@@ -4,7 +4,7 @@ import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
 import com.example.feature_toggle_impl.data.LocalAppToggleLoader
 import com.example.feature_toggle_impl.data.RawLocalAppToggleLoader
-import com.example.feature_toggle_impl.data_model.LocalAppToggleRecord
+import com.example.feature_toggle_impl.data.model.LocalAppToggleRecord
 import kotlinx.coroutines.runBlocking
 import org.junit.Assert.*
 import org.junit.BeforeClass

@@ -2,7 +2,7 @@ package com.example.feature_toggle_impl.data
 
 import android.content.Context
 import com.example.feature_toggle_impl.R
-import com.example.feature_toggle_impl.data_model.LocalAppToggleRecord
+import com.example.feature_toggle_impl.data.model.LocalAppToggleRecord
 import com.google.gson.GsonBuilder
 import com.google.gson.reflect.TypeToken
 import java.io.InputStreamReader

@@ -5,8 +5,14 @@ package com.example.key_value_storage_api
  */
 interface KeyValueStorageWriter {
     /**
+     * Runs updating process with reading data in a storage opportunity
+     * @param updateAction user's action for data updating
+     */
+    fun updateWithRead(updateAction: (KeyValueStorageReader, KeyValueStorageWriteOperations) -> Unit)
+
+    /**
      * Runs updating process
      * @param updateAction user's action for data updating
      */
-    fun update(updateAction: (KeyValueStorageReader, KeyValueStorageWriteOperations) -> Unit)
+    fun update(updateAction: (KeyValueStorageWriteOperations) -> Unit)
 }

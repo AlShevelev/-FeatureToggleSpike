@@ -15,12 +15,26 @@ class SharedPrefKeyValueStorageWriter(
     private val sharedPreferences: SharedPreferences
 ) : KeyValueStorageWriter {
     /**
+     * Runs updating process with reading data in a storage opportunity
+     * @param updateAction user's action for data updating
+     */
+    override fun updateWithRead(updateAction: (KeyValueStorageReader, KeyValueStorageWriteOperations) -> Unit) =
+        updateInternal {
+            updateAction(reader, SharedPrefKeyValueStorageWriteOperations(it))
+        }
+
+    /**
      * Runs updating process
      * @param updateAction user's action for data updating
      */
-    override fun update(updateAction: (KeyValueStorageReader, KeyValueStorageWriteOperations) -> Unit) {
+    override fun update(updateAction: (KeyValueStorageWriteOperations) -> Unit) =
+        updateInternal {
+            updateAction(SharedPrefKeyValueStorageWriteOperations(it))
+        }
+
+    private fun updateInternal(updateAction: (SharedPreferences.Editor) -> Unit) {
         val editor = sharedPreferences.edit()
-        updateAction(reader, SharedPrefKeyValueStorageWriteOperations(editor))
+        updateAction(editor)
         editor.apply()
     }
 }
