@@ -121,6 +121,21 @@ class SharedPrefKeyValueStorageTest {
         }
     }
 
+    /**
+     * Checks a case when we try to read a value that doesn't exist
+     */
+    @Test
+    fun readNoExist() {
+        // Arrange
+        val key = UUID.randomUUID().toString()
+
+        // Act
+        val result = testSubject.reader.getStringSet(key)
+
+        // Assert
+        assertNull(result)
+    }
+
     companion object {
         private lateinit var testSubject: KeyValueStorage
 
